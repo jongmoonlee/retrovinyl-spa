@@ -1,0 +1,43 @@
+Section19
+Project: Getting Started
+
+npm i @angular/cli@latest
+
+ng new onlineshop
+npm i --save firebase@4.2.0 angularfire2@4.0.0-rc.1
+
+npm i --save bootstrap
+
+npm i --save @ng-bootstrap/ng-bootstrap
+
+firebase --version
+firebase login
+firebase init
+
+
+ng build --prod
+firebase deploy
+
+Section:20
+Project:Authentification and Authorization
+
+1) implementing Login 
+
+0. enable Google in "sing-in method" tab on firebase console web page 
+1. make a login link in login.component.html
+2. make a routerLink ="/login" and click ="login()"
+3. in ts file,
+import { AngularFireAuth} from 'angularfire2/auth';
+import * as firebase from 'firebase';
+
+constructor(private afAuth: AngularFireAuth) {
+login() {
+	this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+
+}
+
+2) implementing Logout
+
+this.afAuth.auth.signOut();
+
+in html, {{user.displayName}}

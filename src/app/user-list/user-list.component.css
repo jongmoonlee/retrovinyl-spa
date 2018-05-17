@@ -1,0 +1,22 @@
+.userList {
+    font-size: 0.8em;    
+    padding-left: 5px;
+    padding-right: 5px;
+    
+}
+
+.user{
+    color: white;
+    border: 1px;
+}
+
+@media screen and (max-width: 378px) {
+    .user {
+        color: yellow; 
+    }
+  }
+
+.userName {
+    
+    align-content: center;
+}

@@ -1,0 +1,8 @@
+
+<i class="fa fa-lightbulb-o" style="color:greenyellow"> on-line</i>  
+<div class="userList" *ngFor="let user of userList$ | async" >
+  <div class="user">
+      <span><i class="fa fa-user"></i> {{ user.name }}</span>  
+  </div>
+  
+</div>

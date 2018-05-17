@@ -1,0 +1,51 @@
+
+#col-12 {
+    /* margin-left:25%; 
+    margin-right:auto;  */
+    padding-bottom: 5px;
+    padding-top: 0px;
+}
+
+@media screen and (max-width: 379px) {
+  #col-12 {
+    margin-left:1%;
+    padding-left:0px;
+    padding-right:0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+  }
+}
+
+@media screen and (max-width: 379px) {
+    #promo-header {
+      font-size: 25px;
+    }
+  }
+  
+  /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 378px) {
+    .col-3 {
+      font-size: 11px;
+      padding-left:5px;
+      padding-right:0px;
+      padding-bottom:2px;
+    }
+  }
+
+  @media screen and (max-width: 378px) {
+    .col-5 {
+      font-size: 0.7px;
+      margin-left:10px;
+      margin-right:2px;       
+    }
+  }
+
+  @media screen and (max-width: 378px) {
+    #app-product-card {
+      margin-right:0px;    
+    }
+  }
+
+  
+
+  

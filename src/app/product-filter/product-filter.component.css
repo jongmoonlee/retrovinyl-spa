@@ -1,0 +1,31 @@
+.sticky-top{
+    top: 80px;
+}
+
+@media screen and (max-width: 378px){
+    .sticky-top {
+        top: 10px;  
+        margin-bottom: 20px; 
+    }
+}
+
+
+.list-group-item-action
+{ 
+    overflow-wrap: break-word;   
+    position: relative;
+    display: block;   
+    padding-left: 5%; 
+      
+}
+
+@media screen and (max-width: 378px) {
+.list-group-item-action
+    { 
+        overflow-wrap: break-word;   
+        position: relative;
+        display: block;   
+        padding-left: 5%; 
+        
+    }
+}

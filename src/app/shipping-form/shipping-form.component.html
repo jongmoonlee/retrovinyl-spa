@@ -1,0 +1,54 @@
+<form #f="ngForm">
+    <h3>Shipping Order</h3>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input #name="ngModel" [(ngModel)]="shipping.name" name ="name" id="name" type="text" class="form-control" required>
+    <div class="alert alert-danger" *ngIf="name.touched && name.invalid">Name is required</div>
+  </div>
+  <div class="form-group">
+      <label for="address">address</label>
+      <div class="input-group">
+          <input #address="ngModel" [(ngModel)]="shipping.address" name ="address" id="address" type="text" class="form-control" placeholder="address1" required> 
+      </div>
+      <div class="alert alert-danger" *ngIf="address.touched && address.invalid">
+        <div *ngIf="address.errors.required"> address is required</div>
+        <div *ngIf="address.errors.min"> Minimum address should be greater than 0</div>
+      </div> 
+
+      <label for="address1"></label>
+      <div class="input-group">
+          <input #address1="ngModel" [(ngModel)]="shipping.address1" name ="address1" id="address1" type="text" class="form-control" placeholder="address2" required> 
+      </div>
+      <div class="alert alert-danger" *ngIf="address1.touched && address1.invalid">
+        <div *ngIf="address1.errors.required"> address1 is required</div>
+        <div *ngIf="address1.errors.min"> Minimum address should be greater than 0</div>
+      </div> 
+      
+  </div>
+
+  <div class="form-group">
+      <label for="state">state</label>
+      <select #city="ngModel" [(ngModel)]="shipping.state" name ="state" id="state" class="form-control" required>
+        <option value=""></option>
+        <option *ngFor="let s of states$">
+          {{ s }}
+        </option>
+      </select>
+      <!-- <div class="alert alert-danger" *ngIf="state.touched && state.invalid">state is required</div> -->
+  </div>
+
+  <div class="form-group">
+      <label for="suburb">suburb</label>
+      <select #city="ngModel" [(ngModel)]="shipping.suburb" name ="suburb" id="suburb" class="form-control" required>
+        <option value=""></option>
+        <option *ngFor="let sb of suburbs$">
+          {{ sb }}
+        </option>
+      </select>
+      <!-- <div class="alert alert-danger" *ngIf="shipping.suburb.touched && shipping.suburb.invalid">state is required</div> -->
+  </div>  
+  <button 
+  [disabled]="!f.valid"
+  type="button" (click)="placeOrder()" 
+  class="btn-primary">Place Order</button>
+</form>

@@ -1,0 +1,45 @@
+<h2>Search Products</h2>
+
+<p>
+    <input 
+    #query
+    (keyup)="filter(query.value)"
+    class="form-control mr-sm-2" type="text" placeholder="Please type here to search our products" aria-label="Search">
+    <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+</p>
+
+<data-table [items]="items"
+        [itemCount]="itemCount"
+        (reload)="reloadItems($event)">
+
+        <data-table-column [property]="'title'"
+            [header]="'Title'"
+            [sortable]="true"
+            [resizable]="true">
+
+        </data-table-column>
+
+        <data-table-column
+                [property]="'price'"
+                [header]="'Price'"
+                [sortable]="true"
+                [resizable]="true">
+                
+            <ng-template #dataTableCell let-item="item">
+                    {{ item.price | currency:'AUD':true }}
+            </ng-template>
+            
+        </data-table-column>
+
+
+        <data-table-column
+            [property]="'$key'" >
+            <ng-template #dataTableCell let-item="item">
+                    <a [routerLink]="['/product-detail/', item.$key]">View</a>
+            </ng-template>
+    </data-table-column>
+
+</data-table>
+
+
+

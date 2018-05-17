@@ -1,0 +1,85 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" routerLink="home">Retro Vinyl</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" routerLink="/products">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" routerLink="/shopping-cart">
+              Cart
+              <span class="badge badge-warning badge-pill" *ngIf="cart$ | async as cart">
+                  {{ cart.totalItemsCount }}
+              </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" routerLink="/my/order">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" routerLink="/my/order">Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" routerLink="/chatroom">Chat</a>            
+          </li>
+          <li class="nav-item">
+              <a *ngIf="auth.user$ | async as user; else anonymousUser" routerLink="/login"
+              class="nav-link js-scroll-trigger" >  
+                  <!-- {{user.displayName}}               -->
+              </a>
+            </li>
+            <li>
+                <ng-template #anonymousUser>
+                    <div class="nav-item">
+                        <a class="nav-link" routerLink="/login">Login</a>
+                    </div> 
+                </ng-template>
+            </li>           
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<!-- <div class="navigation">
+  <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+
+  <label for="navi-toggle" class="navigation__button">
+      <span class="navigation__icon">&nbsp;</span>
+  </label>
+  <div class="navigation__background">
+    <div class="navigation__background">&nbsp;</div>
+  </div>     
+
+  <nav class="navigation__nav">
+      <ul class="navigation__list">
+          <li class="navigation__item"><a routerLink="/products" class="navigation__link"><span>01</span>Albums</a></li>
+          <li class="navigation__item"><a routerLink="/my/order" class="navigation__link"><span>02</span>My Order</a></li>
+          <li class="navigation__item"><a routerLink="/shopping-cart" class="navigation__link"><span>03</span>
+            Shopping Cart<span class="badge badge-warning badge-pill" *ngIf="cart$ | async as cart">
+            {{ cart.totalItemsCount }}
+          </span> </a></li>
+          <li class="navigation__item"><a routerLink="/search-product" class="navigation__link"><span>04</span>Search</a></li>
+          <li class="navigation__item"><a routerLink="/my/order" class="navigation__link"><span>04</span>Chat</a></li>
+          <li class="navigation__item">
+            <a routerLink="/login" class="navigation__link">
+              <span>05</span>
+            <span *ngIf="auth.user$ | async as user; else anonymousUser">
+                {{user.displayName}} 
+            </span>
+          </a>
+          </li>
+          <ng-template #anonymousUser>
+              <div class="nav-item">
+                  <a class="nav-link" routerLink="/login">Login</a>
+              </div> 
+          </ng-template>
+          </ul>
+  </nav>
+</div> -->
+

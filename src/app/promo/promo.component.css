@@ -1,0 +1,47 @@
+#container {
+    widows: 100px;
+    margin: 53m auto;
+    padding:5px;
+    background: yellow;
+}
+
+.items {
+    max-width: 300px;
+    height: 300px;
+    background:black;
+}
+
+#left, #right {
+    margin: 30px;
+}
+
+#icon {
+    font-size:48px;
+}
+
+.thumbnail {
+    width: 195px;
+    height: 170px;
+    border-radius: 10%;
+    background-size: cover;
+  
+}
+
+.promo-header{  
+    text-align: center;
+    background-color: yellow;  
+}
+
+/* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
+@media screen and (min-width: 379px) {
+    #promo-header {
+      font-size: 25px;
+    }
+  }
+  
+  /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 378px) {
+    #promo-header {
+      font-size: 18px;
+    }
+  }

@@ -5,11 +5,13 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { OrderService } from '../order.service';
 import { Order } from '../models/order';
+import { FormsModule, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-shipping-form',
   templateUrl: './shipping-form.component.html',
-  styleUrls: ['./shipping-form.component.css']
+  styleUrls: ['./shipping-form.component.scss']
 })
 export class ShippingFormComponent implements OnInit, OnDestroy {
   @Input('cart') cart: ShoppingCart;

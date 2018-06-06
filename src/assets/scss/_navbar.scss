@@ -6,7 +6,7 @@
     right: 0;
     padding: 13px;
     text-transform: uppercase;
-    color: white;
+    color: rgb(62, 165, 21);
     border: 0;
     background-color: $primary;
     @include heading-font;
@@ -28,7 +28,7 @@
         font-weight: 400;
         padding: 0.75em 0;
         letter-spacing: 1px;
-        color: white;
+        color: rgb(62, 165, 21);
         @include heading-font;
         &.active,
         &:hover {

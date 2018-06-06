@@ -25,8 +25,6 @@ export class BsNavbarComponent implements OnInit {
   constructor(
     public auth: AuthService,
     private shoppingCartService: ShoppingCartService) {
-
-
  }
 
   async ngOnInit() {

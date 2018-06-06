@@ -1,58 +1,83 @@
-<h3>Shopping Cart</h3>
-<div class="row col-12" *ngIf="cart$ | async as cart">
-  <div class="col-9">
-      <p id="cart-header">You have 
-          <span class="span">{{ cart.totalItemsCount}}</span> 
-          items in your shopping cart    
-      </p>
-  </div>
-  <div class="col-3">
-      <button 
-      *ngIf="cart.items.length"
-      (click)="clearCart()"
-      class="btn btn-light btn-sm">Clear Cart
-  </button>
-  </div>
-   
-<table class="table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Product</th>
-      <th class="text-center" style="width: 20%">Quantity</th>
-      <th class="text-right">Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of cart.items">
-      <td>
-        <div [style.backgroundImage]="'url(' + item.imageUrl+ ')'" class="thumbnail"></div>
-      </td>
-      <td>
-        {{ item.title }}
-      </td>
-      <td>
-        <app-product-quantity id="app-product-quantity"
-        [product]="item" [shopping-cart]="cart">          
-        </app-product-quantity>
-      </td>
-      <td class="text-right">
-        {{ item.totalPrice | currency:'USD':true}}
-      </td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th class="text-right">{{ cart.totalPrice | currency:'USD':true}}</th>
-    </tr>
-  </tfoot>
-</table>
-<a 
-  *ngIf="cart.items.length"
-  routerLink="/check-out"
-  class="btn btn-primary">Check Out</a>
+<app-navbar-album></app-navbar-album>
 
-</div>
+
+    <div class="container">
+        <div id="shopping-cart" class="shopping-cart">
+            <h3>Shopping Cart</h3>
+            <div class="row col-12" *ngIf="cart$ | async as cart">              
+
+              <div class="col-9">
+                  <p id="cart-header">You have 
+                      <span class="span">{{ cart.totalItemsCount}}</span> 
+                      items in your shopping cart    
+                  </p>
+              </div>
+              <div class="col-3">
+                  <button 
+                  *ngIf="cart.items.length"
+                  (click)="clearCart()"
+                  class="btn btn-light btn-sm">Clear Cart
+              </button>
+              </div>               
+            <table class="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Album</th>
+                  <th>Artist</th>
+                  <th class="text-center" style="width: 20%">Quantity</th>
+                  <th class="text-right">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of cart.items">
+                  <td>
+                    <div [style.backgroundImage]="'url(' + item.imgUrl+ ')'" class="thumbnail"></div>
+                  </td>
+                  <td>
+                    {{ item.name }}
+                  </td>
+                  <td>
+                    {{ item.artist }}
+                  </td>
+                  <td>
+                    <app-product-quantity id="app-product-quantity"
+                    [product]="item" [shopping-cart]="cart">          
+                    </app-product-quantity>
+                  </td>
+                  <td class="text-right">
+                    {{ item.totalPrice | currency:'USD':true}}
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th class="text-right">{{ cart.totalPrice | currency:'USD':true}}</th>
+                </tr>
+              </tfoot>
+            </table>
+            
+            <span *ngIf="cart.items.length">
+              <a                
+                routerLink="/check-out"                
+                class="btn btn-primary">Check Out
+              </a>            
+              
+            </span>
+            <span *ngIf="cart.items.length">
+                <a                
+                  routerLink="/products"                
+                  class="btn btn-success">Continue to rock
+                </a>            
+                
+              </span>
+            </div>
+        
+        </div>
+      </div>
+
+
+

@@ -20,6 +20,14 @@
     $('.navbar-collapse').collapse('hide');
   });
 
+  // // Vide - Video Background Settings
+  // $('body').vide({
+  //   mp4: "mp4/bg.mp4",
+  //   poster: "img/bg-mobile-fallback.jpg"
+  // }, {
+  //   posterType: 'jpg'
+  // });
+
   // Activate scrollspy to add active class to navbar items on scroll
   $('body').scrollspy({
     target: '#mainNav',
@@ -46,5 +54,12 @@
   $('.portfolio-modal').on('hidden.bs.modal', function(e) {
     $(".navbar").removeClass("d-none");
   })
+
+
+
+    
+
+
+
 
 })(jQuery); // End of use strict

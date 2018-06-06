@@ -9,7 +9,7 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 @Component({
   selector: 'app-search-product',
   templateUrl: './search-product.component.html',
-  styleUrls: ['./search-product.component.css']
+  styleUrls: ['./search-product.component.scss']
 })
 export class SearchProductComponent implements OnInit, OnDestroy {
 
@@ -52,7 +52,7 @@ export class SearchProductComponent implements OnInit, OnDestroy {
   filter(query: string) {
       // tslint:disable-next-line:prefer-const
       let filteredProducts = (this.queries) ?
-      this.products.filter(p => p.title.toLowerCase().includes(query.toLocaleLowerCase())) :
+      this.products.filter(p => p.name.toLowerCase().includes(query.toLocaleLowerCase())) :
       this.products;
       this.initializeTable(filteredProducts);
   }

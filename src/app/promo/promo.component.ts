@@ -17,6 +17,4 @@ export class PromoComponent {
   this.items = products;
   });
 }
-
-
 }

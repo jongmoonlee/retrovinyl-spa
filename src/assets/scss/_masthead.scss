@@ -2,10 +2,11 @@
 header.masthead {
   text-align: center;
   color: white;
-  background-image: url('../img/header-bg.jpg');
-  background-repeat: no-repeat;
+  background-image: url('../img/background/header-bg.jpg'); opacity: 0.95;;
+  background-repeat: no-repeat; 
   background-attachment: scroll;
   background-position: center center;
+  
   @include background-cover;
   .intro-text {
     padding-top: 150px;

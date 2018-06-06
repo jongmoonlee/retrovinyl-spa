@@ -16,14 +16,14 @@ export class AlbumService {
  }
 
   get(productId) {
-    return this.db.object('/products/' + productId);
+    return this.db.object('/albums/' + productId);
   }
 
   update(productId, product) {
-    return this.db.object('/products/' + productId).update(product);
+    return this.db.object('/albums/' + productId).update(product);
   }
 
   delte(productId) {
-    return this.db.object('/products/' + productId).remove();
+    return this.db.object('/albums/' + productId).remove();
   }
 }

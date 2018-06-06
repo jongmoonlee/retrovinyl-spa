@@ -1,0 +1,82 @@
+<app-navbar-album></app-navbar-album>
+
+
+    <div class="container">
+        <div id="shopping-cart" class="shopping-cart">
+            <h3>Wish List</h3>
+            <div class="row col-12" *ngIf="wish$ | async as wish">
+              <div class="col-9">
+                  <p id="cart-header">You have 
+                      <span class="span">{{ wish.totalItemsCount}}</span> 
+                      items in your Wishlist    
+                  </p>
+              </div>
+              <div class="col-3">
+                  <button 
+                  *ngIf="wish.items.length"
+                  (click)="clearWishList()"
+                  class="btn btn-light btn-sm">Clear Wish List
+              </button>
+              </div>               
+            <table class="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Album</th>
+                  <th>Artist</th>
+                  <th class="text-center" style="width: 20%">Add to Cart</th>                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of wish.items">
+                  <td>
+                    <div [style.backgroundImage]="'url(' + item.imgUrl+ ')'" class="thumbnail"></div>
+                  </td>
+                  <td>
+                    {{ item.name }}
+                  </td>
+                  <td>
+                    {{ item.artist }}
+                  </td>
+                  <td>
+                      <span *ngIf="cart$ | async as cart">                        
+                            <button 
+                            *ngIf="cart.getQuantity(item) === 0; else updateQuantity"
+                            (click)="addToCart(item)"
+                            (click)="removeWishList(item)"
+                            (click)="updateQuantity"
+                            class="btn btn-primary"> Add to Cart</button>                       
+                      </span>
+                      <span *ngIf="cart$ | async as cart">
+                        <span *ngIf="!cart.getQuantity(item)">
+                            <button class="btn btn-secondary"
+                            (click)="removeWishList(item)">Remove from wishlist</button>
+                        </span>
+                      </span> 
+                  </td> 
+                  <ng-template #updateQuantity>
+                      {{item.name}} is successfully added to your Cart!                     
+                  </ng-template>
+                </tr>
+                <tr>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th class="text-right">{{ wish.totalPrice | currency:'USD':true}}</th>
+                </tr>
+              </tfoot>
+            </table>
+            <a
+              routerLink="/products"
+              class="btn btn-success">Continue to rock
+            </a>            
+            </div>
+        </div>
+      </div>
+
+
+

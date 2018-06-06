@@ -19,4 +19,8 @@ export class UserService {
     return this.db.object('/users/' + uid);
   }
 
+  isAdmin(uid: string): FirebaseObjectObservable<AppUser> {
+    return this.db.object('/users/' + uid + '/isAdmin');
+  }
+
 }

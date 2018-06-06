@@ -1,25 +1,29 @@
-<div *ngIf="product.title" class="card">
-    <h4>{{ product.title }}</h4>
-    <div class="description">
-        <img *ngIf="product.imageUrl" class="card-img-top" [src]="product.imageUrl" alt="{{ product.title }}">
-        {{product.description}}        
-    </div>       
-  </div>  
-  <div class="card-footer">
-      <div class="row">  
-        <span class="col-6" id="price-col1">
-                {{ product.price | currency:'USD':true }}
-        </span>       
-        <span class="col-6" id="price-col2">
-            <button class="btn btn-outline-fail my-2 my-sm-0">Add to Cart  </button>
-            <div class="quantity" *ngIf="cart$ | async as cart">   
-                <app-product-quantity 
-                [product]="product" [shopping-cart]="cart">          
-                </app-product-quantity>   
-            </div>
-        </span>
-      </div>       
-  </div>
+<app-navbar-album></app-navbar-album>
+<div class="container">   
+    <div class="jumbotron">
+            <div *ngIf="product.name">
+                <h3>{{ product.name }}: {{product.artist}} ({{product.year}})</h3>                
+                    <p class="description">
+                        <img img class="img-fluid" *ngIf="product.imgUrl" [src]="product.imgUrl" alt="{{ product.name }}">
+                        {{product.content}}        
+                    </p>
+            </div>                        
+            <div class="row">  
+                <span class="col-6" id="price-col1">
+                        {{ product.price | currency:'USD':true }}
+                </span>       
+                <span class="col-6" id="price-col2">
+                    <button class="btn btn-outline-fail my-2 my-sm-0">Add to Cart  </button>
+                        <div class="quantity" *ngIf="cart$ | async as cart">   
+                            <app-product-quantity 
+                            [product]="product" [shopping-cart]="cart">          
+                            </app-product-quantity>   
+                        </div>
+                </span>
+            </div>  
+    </div>           
+</div>   
+
 
 
 

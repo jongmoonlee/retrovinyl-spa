@@ -1,13 +1,24 @@
-<div class="messageContainer">
-  <div class="messageDate">
-    <span class="sender">
-        {{ userName }}
-    </span>
-    <span class="timestamp">
-        {{timestamp}}
-    </span>
-  </div>
-  <div class="messageContent"> 
-    {{messageContent}}
-  </div>
+<div id="message"class="container" > 
+    <div class="messageDate">
+      <span class="sender">
+          {{ userName }}           
+      </span>
+      <span class="timestamp">
+          {{timestamp}} 
+          {{$key}}
+      </span>
+    </div>
+    <div class="row">
+      <div class="col-10">
+          <div class="messageContent"> 
+              {{messageContent}}      
+          </div>
+      </div>
+     
+      <div class="col-1">
+        <span (click)="delete($key)" >
+          <i class="fas fa-trash"></i>
+        </span>
+      </div>
+    </div>      
 </div>

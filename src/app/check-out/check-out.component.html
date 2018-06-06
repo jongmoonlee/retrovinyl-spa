@@ -1,14 +1,22 @@
-<div class="row" *ngIf="cart$ | async as cart">
-  
-  <div class="col-6">
-    <app-shopping-cart-summary [cart]="cart"></app-shopping-cart-summary>
-  </div>
-    
-  <div class="col-6">
-    <app-shipping-form [cart]="cart"></app-shipping-form>
-  </div>
 
-  
-</div>
+  <app-navbar-album></app-navbar-album>
+
+    <div id="check-out" class="container">
+        <div class="row" id="check-out" *ngIf="cart$ | async as cart">
+          
+            <div id="check-out" class="col-sm-6">
+              <app-shopping-cart-summary [cart]="cart"></app-shopping-cart-summary>
+            </div>
+              
+            <div id="check-out" class="col-sm-6">
+              <app-shipping-form [cart]="cart"></app-shipping-form>
+            </div>  
+            
+          </div>
+    </div>
+
+ 
+
+
 
 

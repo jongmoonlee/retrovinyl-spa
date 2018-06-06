@@ -1,0 +1,13 @@
+#check-out {
+    margin-top:15px;
+}
+
+@media screen and (max-width:378px) {
+    #check-out{       
+        font-size: 0.8em;
+        color:black;
+        background-color: rgb(221, 227, 238); 
+        margin-top:0px;
+    }
+}
+

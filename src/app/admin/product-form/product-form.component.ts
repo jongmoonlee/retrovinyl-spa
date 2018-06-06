@@ -4,21 +4,25 @@ import { NgForm } from '@angular/forms';
 import { AlbumService } from '../../album.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/take';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.css']
+  styleUrls: ['./product-form.component.scss']
 })
 export class ProductFormComponent implements OnInit {
 
   categories$;
   product = {
-    'title': null,
+    'name': null,
     'price': null,
     'category': null,
-    'imageUrl': null,
-    'description': null
+    'imgUrl': null,
+    'content': null,
+    'artist': null,
+    'year' : null,
+    'rank' : null
   };
 
   id;

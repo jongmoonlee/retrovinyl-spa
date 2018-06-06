@@ -9,11 +9,11 @@ import 'rxjs/add/operator/toPromise';
 @Component({
   selector: 'app-admin-orders',
   templateUrl: './admin-orders.component.html',
-  styleUrls: ['./admin-orders.component.css']
+  styleUrls: ['./admin-orders.component.scss']
 })
 export class AdminOrdersComponent {
   orders$;
-  x;
+  userName;
 
   constructor(
     private orderService: OrderService,
@@ -25,8 +25,8 @@ export class AdminOrdersComponent {
     getName(id: string) {
       this.orderService.getUserName(id).subscribe
       (snapshot => {
-        this.x = snapshot.val();
-        return this.x;
+        this.userName = snapshot.val();
+        return this.userName;
       });
     }
 }

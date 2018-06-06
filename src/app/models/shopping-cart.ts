@@ -19,7 +19,7 @@ export class ShoppingCart {
 
     getQuantity(product: ShoppingCartItem) {
         // tslint:disable-next-line:prefer-const
-        let item = this.itemsMap[product.$key];
+        let item = this.itemsMap[product.id];
         return item ? item.quantity : 0;
       }
 

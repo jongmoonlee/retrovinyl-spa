@@ -1,0 +1,17 @@
+#mainNav{
+    background-color: black;
+    background-image: url("../../assets/img/albums/43.jpg");
+  }
+
+.menu{
+  text-align: justify;
+}
+#dropdown01{
+  color: white;
+}
+
+@media screen and (max-width: 378px){
+  #user {
+      font-size: 0.8em;
+  }
+}

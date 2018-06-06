@@ -5,7 +5,7 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-chatroom',
   templateUrl: './chatroom.component.html',
-  styleUrls: ['./chatroom.component.css']
+  styleUrls: ['./chatroom.component.scss']
 })
 export class ChatroomComponent implements OnInit, AfterViewChecked {
   @ViewChild('scroller') private feedContainer: ElementRef;

@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.css']
+  styleUrls: ['./product-detail.component.scss']
 })
 
 
@@ -29,10 +29,14 @@ export class ProductDetailComponent implements OnInit {
   product = {
     'title': null,
     'price': null,
-    'category': null,
-    'imageUrl': null,
-    'description': null,
-    '$key': null
+    'artist': null,
+    'imgUrl': null,
+    'content': null,
+    '$key': null,
+    'rank': null,
+    'name': null,
+    'year': null,
+    'id': null
   };
 
   constructor(

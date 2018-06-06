@@ -1,0 +1,82 @@
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background-size: cover;
+}
+
+@media screen and (max-width:378px) {
+  .row col-10 {
+      font-size: 0.8em;
+  }
+}
+
+@media screen and (max-width:378px) {
+  #cart-header {
+      font-size: 0.7em;
+  }
+}
+
+@media screen and (max-width:378px) {
+  .span {
+      color: red;
+      font-size: bold;
+  
+  }
+}
+
+@media screen and (max-width:378px) {
+  .btn {
+      margin-left: 0%;
+      font-size: 0.7em;
+      color: rgb(22, 17, 17);
+  }
+}
+
+@media screen and (max-width:378px) {
+  .table {
+      margin-left: 0%;
+      font-size: 0.8em;
+      color: rgb(22, 17, 17);
+  }
+}
+
+@media screen and (max-width:378px) {
+  #app-product-quantity {
+      font-size: 1.2em;
+      margin-left: 75px;
+      text-align: center;
+      color: rgb(22, 17, 17);
+  }
+}
+
+@media screen and (max-width:378px) {
+  .btn.btn-primary{
+      margin-left: 0%;
+      font-size: 0.7em;
+      color:white;
+      background-color: rgb(12, 70, 177)
+  }
+}
+
+
+#shopping-cart{
+  font-size: 1em;
+}
+
+@media screen and (max-width: 379px) {
+  #shopping-cart {
+    margin-left:1%;
+    padding-left:0px;
+    padding-right:0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    font-size: 0.7em;
+  }
+}
+
+
+
+
+
+

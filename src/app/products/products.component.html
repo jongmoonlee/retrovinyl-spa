@@ -1,20 +1,89 @@
-   
+ <!-- Navigation -->
 
+ <div class="container">   
+    <app-navbar-album></app-navbar-album>    
+ </div>   
+        <div class="container" id="albumMain">    
+            <div id="jumbo" class="jumbotron">
+                <app-promo></app-promo>
+                <div id="Sort">
+                    <a routerLink="#">
+                        <span (click)="populateProducts(false)">
+                            <i id="sort" class="fas fa-sort">Order by rank</i>
+                        </span>
+                    </a>
+                    <a id="shuffle" routerLink="#">
+                        <span (click)="populateProducts(true)">
+                                <i id="sort" class="fas fa-random">Shuffle rank</i>
+                        </span>
+                    </a>
+                </div>
+                
+               
+                    
+            </div>
+            <div *ngFor="let c of products">              
+                <div class="row">                   
+                    <div class="col-sm-12">
+                        <div class="jumbotron">
+                            <div class="row">
+                                <div>
+                                    <h5> #{{c.rank}}. {{ c.artist }} : {{c.name}} {{c.id}}</h5>
+                                </div>                                                                                    
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                        <a [routerLink]="['/product-detail/'+c.$key]">
+                                            <img class="img-fluid" [src]='c.imgUrl' [title]='c.name'> 
+                                        </a>    
+                                        <div *ngIf="cart$ | async as cart">                                  
+                                                <div *ngIf="showActions" class="card-footer">
+                                                   
+                                                        <span>
+                                                            <button 
+                                                            id="button"
+                                                            *ngIf="cart.getQuantity(c) === 0; else updateQuantity"
+                                                            (click)="addToCart(c)"
+                                                            (click)="removeWishList(c)"
+                                                            class="btn btn-primary"> Add to Cart</button>
+                                                        </span>
+                                                          
+                                                        <span *ngIf="wish$ | async as wish" class="col-sm-6">    
+                                                            <button 
+                                                            id="button"
+                                                            *ngIf="wish.getQuantity(c) === 0 && cart.getQuantity(c) === 0"
+                                                                (click)="addToWishList(c)"
+                                                                class="btn btn-success"> Add to Wishlist</button> 
+                                                        </span>
 
-        <div class="container">    
-            <div *ngFor="let c of album | async">
-                <div class="row">
-                    <div class="col-sm-6">
-                         <img width="100" [src]='c.imgUrl'[title]='c.name'>
-                    </div>
-                    <div class="col-sm-6">
-                        {{c.rank}} {{ c.artist }}  {{c.name}} {{c.year}} } {{c.imgUrl}}
+                                                        <span *ngIf="wish$ | async as wish" class="col-sm-6">    
+                                                            <span *ngIf="wish.getQuantity(c) && cart.getQuantity(c) === 0"> 
+                                                                <i class="fa fa-heart" style="color:red"
+                                                                (click)="removeWishList(c)"
+                                                                ></i>
+                                                            </span> 
+                                                        </span>
+                                                </div>
+                                                        <ng-template #updateQuantity>
+                                                          <app-product-quantity id="app-product-quantity" [product]="c" [shopping-cart]="cart">
+                                                          </app-product-quantity>
+                                                        </ng-template>
+                                        </div>
+                                    
+                                </div>
+                                <div class="col-sm-6">                                   
+                                    {{c.content | slice:0:250 }}...
+                                    <a id="readMore" [routerLink]="['/product-detail/'+c.$key]">Read more</a>
+                                </div>
+                            </div>                                
+
+                        </div>                    
 
                     </div>
                 </div>
                     
             </div>
-        </div>    
-        
+        </div>           
+
     
        

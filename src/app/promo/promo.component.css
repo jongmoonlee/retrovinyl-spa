@@ -2,7 +2,6 @@
     widows: 100px;
     margin: 53m auto;
     padding:5px;
-    background: yellow;
 }
 
 .items {
@@ -21,16 +20,12 @@
 
 .thumbnail {
     width: 195px;
-    height: 170px;
-    border-radius: 10%;
+    height: 195px;
     background-size: cover;
   
 }
 
-.promo-header{  
-    text-align: center;
-    background-color: yellow;  
-}
+
 
 /* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
 @media screen and (min-width: 379px) {

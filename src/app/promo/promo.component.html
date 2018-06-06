@@ -1,7 +1,4 @@
-<div class="promo">
-  <div id="promo-header" class="promo-header"> 
-      New Items Arrived!! Hot Deals!! Don't Miss out!!
-    </div>
+<div class="promo">  
     <div id="container">  
         <div ng2-carouselamos class="slides-wrapper"
         [items]="items"
@@ -15,17 +12,17 @@
 </div>
 
 <ng-template #prev>
-    <i class="fa fa-arrow-circle-left" style="font-size:48px;color:white"></i>
+    <i class="fa fa-angle-left" style="font-size:48px;color:white"></i>
 </ng-template>
 
 <ng-template #next>
-    <i class="fa fa-arrow-circle-right" style="font-size:48px;color:white"></i>
+    <i class="fa fa-angle-right" style="font-size:48px;color:white"></i>
 </ng-template>
 
 <ng-template let-item let-i="index" #item>
   <div style="min-width: 200px">     
-      <a [routerLink]="['/product-detail/'+item.$key]">               
-      <img *ngIf="item.imageUrl" class="thumbnail" [src]="item.imageUrl" alt="{{ item.title }}">
-      </a>
+    <a [routerLink]="['/product-detail/'+item.$key]">               
+        <img *ngIf="item.imgUrl" class="thumbnail" [src]="item.imgUrl" alt="{{ item.name }}">
+    </a>
   </div>
 </ng-template>   

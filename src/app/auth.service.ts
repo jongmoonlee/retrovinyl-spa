@@ -55,8 +55,6 @@ export class AuthService {
     this.afAuth.auth.signInWithRedirect(new firebase.auth.GithubAuthProvider());
   }
 
-
-
   logout() {
     this.setUserStatus('offline');
     this.afAuth.auth.signOut();
@@ -87,15 +85,6 @@ export class AuthService {
     }
   }
 
-
-  // if (cartId) return cartId;
-  // else {
-  //   // tslint:disable-next-line:prefer-const
-  //   let result = await this.create();
-  //   localStorage.setItem('cartId', result.key);
-  //   return result.key;
-  // }
-
   getActiveUserList() {
     return this.db.list('users/', {
       query: {
@@ -104,4 +93,8 @@ export class AuthService {
       }
     });
   }
+
+  isAdmin() {
+    return this.db.object('users/' + this.currentUserId);
+}
 }

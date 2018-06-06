@@ -1,53 +1,68 @@
-<h2>Order Detail</h2>
+<app-navbar-album></app-navbar-album>
 
+<div class="container">
+    <h3>Order Detail</h3>
 
-<div *ngIf="authService.user$ | async as user"> 
-   User name {{user.displayName}}  
- </div>
+    <div *ngIf="authService.user$ | async as user"> 
+       User name {{user.displayName}}  {{user.email}}
+     </div>
+    
+    <div *ngIf="shipping$ | async as shipping">
+      Customer Name: {{shipping.name}}
 
-<div *ngIf="shipping$ | async as shipping">
-  Customer Name: {{shipping.name}}
-  Shipping Address: {{shipping.address}}
+      <div>
+          Shipping Address: {{shipping.address}}
           {{ shipping.address1}}  
           {{ shipping.suburb}}  
           {{ shipping.state}} Australia 
+      </div>
+      
+      Date: {{item$.datePlaced}}
+    </div>
+    
+    <div *ngFor="let a of takenItem$ | async">
+        <img *ngIf="a.product.imgUrl" class="thumbnail" [src]="a.product.imgUrl" alt="{{ a.product.name }}" >
+        name : {{a.product.name}} 
+        artist : {{a.product.artist}} 
+        price : {{a.product.price}} 
+        quantity : {{a.quantity}} 
+        Date: {{a.datePlaced }}
+    </div>
+
+
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input #name="ngModel" [(ngModel)]="order.name" name ="name" id="name" type="text" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+            <input #address="ngModel" [(ngModel)]=order.address name="address" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="address1">Address1</label>
+              <input #address1="ngModel" [(ngModel)]=order.address1 name="address1" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="suburb">Suburb</label>
+              <input #suburb="ngModel" [(ngModel)]=order.suburb name="suburb" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="state">State</label>
+              <input #state="ngModel" [(ngModel)]=order.state name="state" type="text" class="form-control">
+        </div>
+        <button class="btn-primary">Save</button>
+        <button type="button" (click)="delete()" class="btn-danger">Delete</button>
+      </form>
+
 </div>
 
-<div *ngFor="let a of takenItem$ | async">
-    <img *ngIf="a.product.imageUrl" class="thumbnail" [src]="a.product.imageUrl" alt="{{ a.product.title }}" >
-    product title : {{a.product.title}} 
-    product price : {{a.product.price}} 
-    product quantity : {{a.quantity}} 
-</div>
+
 
 <!-- <button 
 (click)="delete()"
 class="btn btn-primary">Delete</button> -->
 
-<form #f="ngForm" (ngSubmit)="save(f.value)">
-  <div class="form-group">
-    <label for="name">Title</label>
-    <input #name="ngModel" [(ngModel)]="order.name" name ="name" id="name" type="text" class="form-control" required>
-  </div>
-  <div class="form-group">
-    <label for="address">Address</label>
-      <input #address="ngModel" [(ngModel)]=order.address name="address" type="text" class="form-control">
-  </div>
-  <div class="form-group">
-      <label for="address1">Address1</label>
-        <input #address1="ngModel" [(ngModel)]=order.address1 name="address1" type="text" class="form-control">
-   </div>
-   <div class="form-group">
-      <label for="suburb">Suburb</label>
-        <input #suburb="ngModel" [(ngModel)]=order.suburb name="suburb" type="text" class="form-control">
-   </div>
-   <div class="form-group">
-      <label for="state">State</label>
-        <input #state="ngModel" [(ngModel)]=order.state name="state" type="text" class="form-control">
-   </div>
-  <button class="btn-primary">Save</button>
-  <button type="button" (click)="delete()" class="btn-danger">Delete</button>
-</form>
 
 <!-- <div class="row">
   <div class="col-md-6">

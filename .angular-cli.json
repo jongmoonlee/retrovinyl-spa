@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "mockvinyl"
+    "name": "retrovynyl"
   },
   "apps": [
     {
@@ -19,7 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css",        
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css", 
+        "../node_modules/font-awesome/css/font-awesome.min.css",        
         "assets/css/agency.css",
         "assets/scss/agency.scss"
       ],
@@ -29,7 +30,8 @@
         "assets/vendor/jquery-easing/jquery.easing.min.js",
         "assets/js/jqBootstrapValidation.js",
         "assets/js/contact_me.js",
-        "assets/js/agency.min.js"
+        "assets/js/agency.min.js",
+        "../node_modules/paper/dist/paper-full.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

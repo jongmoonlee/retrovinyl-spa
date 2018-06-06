@@ -67,6 +67,10 @@ export class ChatService {
     });
   }
 
+  deleteMessage(msgId) {
+    return this.db.object('/messages/' + msgId).remove();
+  }
+
   getTimeStamp() {
     const now = new Date();
     const date = now.getUTCFullYear() + '/' +

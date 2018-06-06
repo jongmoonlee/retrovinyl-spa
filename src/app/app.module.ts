@@ -1,3 +1,4 @@
+import { WishListService } from './wish-list.service';
 import { ScrollGlue } from 'angular2-scroll-glue';
 import { ChatService } from './chat.service';
 import { DataTableModule } from 'angular5-data-table';
@@ -50,6 +51,14 @@ import { MessageComponent } from './message/message.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserItemComponent } from './user-item/user-item.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { HeadComponent } from './head/head.component';
+import { NavbarAlbumComponent } from './navbar-album/navbar-album.component';
+import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
+import { WishListComponent } from './wish-list/wish-list.component';
+import { PlayComponent } from './play/play.component';
+import { TestComponent } from './test/test.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -79,10 +88,16 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     FeedComponent,
     MessageComponent,
     UserListComponent,
-    UserItemComponent
+    UserItemComponent,
+    HeadComponent,
+    NavbarAlbumComponent,
+    WishListComponent,
+    PlayComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     CustomFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -96,8 +111,11 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
       { path: '', component: HomeComponent},
       { path: 'products', component: ProductsComponent},
       { path: 'shopping-cart', component: ShoppingCartComponent},
+      { path: 'wish-list', component: WishListComponent},
       { path: 'login', component: LoginComponent},
       { path: 'home', component: HomeComponent},
+      { path: 'play', component: PlayComponent},
+      { path: 'test', component: TestComponent},
 
       { path: 'product-detail/:id', component: ProductDetailComponent},
 
@@ -147,8 +165,10 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     CategoryService,
     AlbumService,
     ShoppingCartService,
+    WishListService,
     OrderService,
-    ChatService
+    ChatService,
+    NgbCarouselConfig
   ],
   bootstrap: [AppComponent]
 })

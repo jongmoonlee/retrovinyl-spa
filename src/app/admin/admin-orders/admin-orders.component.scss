@@ -1,0 +1,12 @@
+#orders{  
+    font-size: 1em;
+    background-color: rgba(189, 187, 191, 0.577);
+}
+
+@media screen and (max-width: 378px) {
+    #orders {
+        // size: 10vh;
+        font-size: 0.5em;    
+        background-color: rgba(189, 187, 191, 0.577);  
+    }
+  }

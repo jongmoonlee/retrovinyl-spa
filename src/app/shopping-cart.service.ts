@@ -19,6 +19,16 @@ export class ShoppingCartService {
     .map(x => new ShoppingCart(x.items));
   }
 
+  async getWishList(): Promise<Observable<ShoppingCart>> {
+    // tslint:disable-next-line:prefer-const
+    let cartId = await this.getOrCreateCartId();
+    return this.db.object('/wish-lists/' + cartId)
+    .map(x => new ShoppingCart(x.items));
+  }
+
+
+
+
   async addToCart(product: Product) {
     this.updateItem(product, 1);
   }
@@ -39,9 +49,12 @@ export class ShoppingCartService {
     });
   }
 
-  private getItem(cartId: string, productId: string) {
+
+  private getItem(cartId: string, productId: number) {
     return this.db.object('/shopping-carts/' + cartId + '/items/' + productId);
   }
+
+
 
   private async getOrCreateCartId(): Promise<string> {
     // tslint:disable-next-line:prefer-const
@@ -60,7 +73,7 @@ export class ShoppingCartService {
      // tslint:disable-next-line:prefer-const
      let cartId = await this.getOrCreateCartId();
      // tslint:disable-next-line:prefer-const
-     let item$ = this.getItem(cartId, product.$key);
+     let item$ = this.getItem(cartId, product.id);
      item$.take(1).subscribe(item => {
        // tslint:disable-next-line:prefer-const
        let quantity = (item.quantity || 0) + change;
@@ -69,10 +82,13 @@ export class ShoppingCartService {
        // tslint:disable-next-line:curly
        else
        item$.update({
-        title: product.title,
-        imageUrl: product.imageUrl,
+        name: product.name,
+        imgUrl: product.imgUrl,
         price: product.price,
-         quantity: quantity
+        artist: product.artist,
+        year: product.year,
+        id: product.id,
+        quantity: quantity
         });
      });
   }

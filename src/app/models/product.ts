@@ -1,9 +1,12 @@
 
 export interface Product {
-    title: string;
     price: number;
-    category: string;
-    imageUrl: string;
+    artist: string;
+    imgUrl: string;
     $key: string;
-    description: string;
+    content: string;
+    rank: number;
+    name: string;
+    year: number;
+    id?: number;
 }

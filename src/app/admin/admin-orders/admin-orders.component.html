@@ -1,34 +1,39 @@
-<h1>Orders</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Login Id</th>
-      <th>Login Email</th>
-      <th>Shipping Name</th>
-      <th>Shipping Address</th>
-      <th>Ordered Date</th>
-      <th></th>
-    </tr>
-  </thead> 
-  <tbody>
-    <tr *ngFor="let order of orders$ | async">     
-        {{ getName(order.userId)}} 
-      <td>
-          <div>{{ x.name }}</div>       
-      </td>
-      <td>
-        <div>{{ x.email }}</div>
-      </td>
-      <td>{{ order.shipping.name }}</td>
-      <td>{{order.shipping.address + ' ' + order.shipping.address1}}</td>
-      <td>{{ order.datePlaced | date}}</td>
-      <td>
-        <a [routerLink]="['/order-detail/'+order.$key]">View</a>
-      </td>
+<app-navbar-album></app-navbar-album>
 
-    </tr>
-  </tbody> 
-</table>
+<div id="orders" class="container">
+    <h1>Orders</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Login Id</th>
+          <th>Login Email</th>
+          <th>Shipping Name</th>
+          <th>Shipping Address</th>
+          <th>Ordered Date</th>
+          <th>View </th>
+        </tr>
+      </thead> 
+      <tbody>
+        <tr *ngFor="let order of orders$ | async">     
+            {{ getName(order.userId)}} 
+          <td>
+              <div>{{ userName.name }}</div>       
+          </td>
+          <td>
+            <div>{{ userName.email | slice:0:10 }}..</div>
+          </td>
+          <td>{{ order.shipping.name }}</td>
+          <td>{{ order.shipping.address + ' ' + order.shipping.address1 | slice:0:10}}..</td>
+          <td>{{ order.datePlaced | date}}</td>
+          <td>
+            <a [routerLink]="['/order-detail/'+order.$key]" style="font-size: 1.2em; font-weight: bold; color: rgb(105, 5, 5)">View</a>
+          </td>
+    
+        </tr>
+      </tbody> 
+    </table>
+</div>
 
 
-<!-- [(ngModel)]="shipping.address1" name ="address1" -->
+
+

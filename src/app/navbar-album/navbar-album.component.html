@@ -1,0 +1,62 @@
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+      <div class="container">
+        <span>
+          <a class="navbar-brand js-scroll-trigger" routerLink="/home"> <i class="fas fa-home" style="color:green"></i></a>
+          <a class="navbar-brand js-scroll-trigger" routerLink="/products"><i class="fas fa-compact-disc" style="color:white"></i>Retro Vinyl</a>
+        </span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item active px-lg-4">
+            </li>
+            <li class="nav-item px-lg-4">
+                <a class="menu" routerLink="/my/orders"> <i class="fa fa-shopping-basket" style="color:white"></i></a>                      
+             </li>
+            <li class="nav-item px-lg-4">
+                <a class="menu" routerLink="/shopping-cart"> <i class="fa fa-shopping-cart" style="color:white"></i>
+                <span *ngIf="cart$ | async as cart">
+                  <span *ngIf ="cart.totalItemsCount > 0"class="badge badge-warning badge-pill" > {{ cart.totalItemsCount }}</span>
+                </span>
+                </a>         
+             </li>
+            <li class="nav-item px-lg-4">
+                <a class="menu" routerLink="/wish-list"><i class="fa fa-heart" style="color:pink"></i>
+                <span *ngIf="wish$ | async as wish">
+                  <span *ngIf = "wish.totalItemsCount > 0" class="badge badge-warning badge-pill" > {{ wish.totalItemsCount }}</span>
+                </span>
+                </a>         
+             </li>
+            <li class="nav-item px-lg-4">
+                <a class="menu" routerLink="/search-product"> <i class="fa fa-search" style="color:white"></i></a>   
+            </li>
+            <li class="nav-item px-lg-4">
+                <a class="menu" routerLink="/chatroom"> <i class="fas fa-comment-dots" style="color:white"></i></a>   
+            </li>
+          </ul>
+          <ng-template #anonymousUser><div class="nav-item"><a class="nav-link" routerLink="/login">Login</a></div></ng-template>      
+          <div ngbDropdown *ngIf="auth.user$ | async as user; else anonymousUser" class="nav-item dropdown">
+                  <a ngbDropdownToggle 
+                  class="nav-link dropdown-toggle" 
+                  id="dropdown01" 
+                  data-toggle="dropdown" 
+                  aria-haspopup="true" 
+                  aria-expanded="true">
+                    {{user.displayName}} <i class="fas fa-user" style="color:white"></i>                
+                  </a> 
+                  <div id="dropdown" ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+                    <div *ngIf="isAdmin | async as isAdmin">                    
+                      <a *ngIf ="isAdmin.$value" class="dropdown-item" routerLink="/admin/orders"><i class="fas fa-lock-open"></i> Manage Orders</a>
+                      <a *ngIf ="isAdmin.$value" class="dropdown-item" routerLink="/admin/products"><i class="fas fa-lock-open"></i> Manage Products</a>
+                    </div>
+                      <a class="dropdown-item" (click)="logout()">Log Out</a>
+                  </div>
+          </div>          
+        </div>
+      </div>
+    </nav>
+
+

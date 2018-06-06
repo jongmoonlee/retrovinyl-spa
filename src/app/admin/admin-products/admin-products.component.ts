@@ -47,7 +47,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   filter(query: string) {
       // tslint:disable-next-line:prefer-const
       let filteredProducts = (query) ?
-      this.products.filter(p => p.title.toLowerCase().includes(query.toLocaleLowerCase())) :
+      this.products.filter(p => p.name.toLowerCase().includes(query.toLocaleLowerCase())) :
       this.products;
     this.initializeTable(filteredProducts);
   }

@@ -1,24 +1,17 @@
 
-    <!-- <div class="feed"
-    infiniteScroll
-    [infiniteScrollDistance]="1"
-    [infiniteScrollThrottle]="50"
-    (scrolled)="onScroll()">
-        <div *ngFor="let message of feed | async" class="message">
-          <app-message [chatMessage]=message></app-message>   
-        </div>
 
-    </div> -->
+    <div class="section">
+            <div class="page-wrap">
+                <div class="jumbotron">
+                        <div *ngFor="let message of feed | async" class="message">
+                             <app-message [chatMessage]=message></app-message>   
+                        </div>
+                </div>  
+            </div>   
+    </div>
+    <!-- <footer class="site-footer">
+    </footer> -->
 
 
-    <div class="page-wrap">
-  
-        <div *ngFor="let message of feed | async" class="message">
-            <app-message [chatMessage]=message></app-message>   
-          </div>
-            
-      </div>
-      
-      <footer class="site-footer">
-      </footer>
+   
 

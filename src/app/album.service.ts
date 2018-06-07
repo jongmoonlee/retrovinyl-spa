@@ -1,29 +1,29 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { Http } from '@angular/http';
 
 @Injectable()
 export class AlbumService {
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private http: Http) { }
 
 
   getAll() {
-    return this.db.list('/albums');
+    return this.http.get('http://localhost:5000/api/albums');
   }
 
    create(album) {
-    return this.db.list('/').push(album);
+    // return this.db.list('/').push(album);
  }
 
   get(productId) {
-    return this.db.object('/albums/' + productId);
+    return this.http.get('http://localhost:5000/api/albums/' + productId);
   }
 
   update(productId, product) {
-    return this.db.object('/albums/' + productId).update(product);
+    // return this.db.object('/albums/' + productId).update(product);
   }
 
   delte(productId) {
-    return this.db.object('/albums/' + productId).remove();
+    // return this.db.object('/albums/' + productId).remove();
   }
 }

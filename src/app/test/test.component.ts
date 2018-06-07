@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlbumService } from '../album.service';
 
 @Component({
   selector: 'app-test',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./test.component.scss']
 })
 export class TestComponent implements OnInit {
-
-  constructor() { }
+  albums: any;
+  constructor(private album: AlbumService) { }
 
   ngOnInit() {
+    this.album.getAll().subscribe(res => {
+      this.albums = res.json();
+  });
   }
-
 }

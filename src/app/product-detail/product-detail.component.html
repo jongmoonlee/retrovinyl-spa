@@ -1,26 +1,29 @@
-<app-navbar-album></app-navbar-album>
+<div class="container">
+    <app-navbar-album></app-navbar-album>
+</div>
 <div class="container">   
-    <div class="jumbotron">
-            <div *ngIf="product.name">
-                <h3>{{ product.name }}: {{product.artist}} ({{product.year}})</h3>                
+    <div class="jumbotron">  
+      
+            <h3> {{album?.name}}: {{album?.artist}} ({{album?.year}})</h3>                
                     <p class="description">
-                        <img img class="img-fluid" *ngIf="product.imgUrl" [src]="product.imgUrl" alt="{{ product.name }}">
-                        {{product.content}}        
-                    </p>
-            </div>                        
+                        <img class="img-fluid" [src]="album?.imgUrl" alt="{{ album?.name }}">
+                        {{album?.content}}        
+                    </p>                               
             <div class="row">  
                 <span class="col-6" id="price-col1">
-                        {{ product.price | currency:'USD':true }}
+                        {{ album?.price | currency:'USD':true }}
                 </span>       
-                <span class="col-6" id="price-col2">
+                <!-- <span class="col-6" id="price-col2">
                     <button class="btn btn-outline-fail my-2 my-sm-0">Add to Cart  </button>
                         <div class="quantity" *ngIf="cart$ | async as cart">   
                             <app-product-quantity 
                             [product]="product" [shopping-cart]="cart">          
                             </app-product-quantity>   
                         </div>
-                </span>
-            </div>  
+                </span> -->
+            </div> 
+
+            
     </div>           
 </div>   
 

@@ -22,21 +22,21 @@
                
                     
             </div>
-            <div *ngFor="let c of products">              
+            <div *ngFor="let album of albums">              
                 <div class="row">                   
                     <div class="col-sm-12">
                         <div class="jumbotron">
                             <div class="row">
                                 <div>
-                                    <h5> #{{c.rank}}. {{ c.artist }} : {{c.name}} {{c.id}}</h5>
+                                    <h5> #{{album.rank}}. {{ album.artist }} : {{album.name}} {{album.id}}</h5>
                                 </div>                                                                                    
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
-                                        <a [routerLink]="['/product-detail/'+c.$key]">
-                                            <img class="img-fluid" [src]='c.imgUrl' [title]='c.name'> 
+                                        <a [routerLink]="['/product-detail/'+album.id]">
+                                            <img class="img-fluid" [src]='album.imgUrl' [title]='album.name'> 
                                         </a>    
-                                        <div *ngIf="cart$ | async as cart">                                  
+                                        <!-- <div *ngIf="cart$ | async as cart">                                  
                                                 <div *ngIf="showActions" class="card-footer">
                                                    
                                                         <span>
@@ -68,12 +68,12 @@
                                                           <app-product-quantity id="app-product-quantity" [product]="c" [shopping-cart]="cart">
                                                           </app-product-quantity>
                                                         </ng-template>
-                                        </div>
+                                        </div> -->
                                     
                                 </div>
                                 <div class="col-sm-6">                                   
-                                    {{c.content | slice:0:250 }}...
-                                    <a id="readMore" [routerLink]="['/product-detail/'+c.$key]">Read more</a>
+                                    {{album.content | slice:0:250 }}...
+                                    <a id="readMore" [routerLink]="['/product-detail/'+album.$key]">Read more</a>
                                 </div>
                             </div>                                
 

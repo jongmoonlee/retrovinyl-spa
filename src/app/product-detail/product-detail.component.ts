@@ -16,50 +16,33 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 
 export class ProductDetailComponent implements OnInit {
-  @Input('item') item: Product;
+  // @Input('item') item: Product;
   // tslint:disable-next-line:no-input-rename
-  @Input('show-actions') showActions = true;
+  // @Input('show-actions') showActions = true;
   // tslint:disable-next-line:no-input-rename
- private shoppingCart: ShoppingCart;
+//  private shoppingCart: ShoppingCart;
 
   id;
-  product$;
-  cart$;
-
-  product = {
-    'title': null,
-    'price': null,
-    'artist': null,
-    'imgUrl': null,
-    'content': null,
-    '$key': null,
-    'rank': null,
-    'name': null,
-    'year': null,
-    'id': null
-  };
+  // product$;
+  // cart$;
+  album: any;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private cartService: ShoppingCartService,
-    private productService: AlbumService
-  ) {
-
-
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.productService.get(this.id).take(1).subscribe(p => this.product = p);
-
-    this.cart$ = this.cartService.getCart();
-
-   }
-
+    // private cartService: ShoppingCartService,
+    private albumService: AlbumService
+  ) {}
 
   async ngOnInit() {
-    this.cart$ = await this.cartService.getCart();
+    this.id = await this.route.snapshot.paramMap.get('id');
+    await this.albumService.get(this.id).subscribe(res => {
+      this.album = res.json();
+    });
+    // this.cart$ = await this.cartService.getCart();
   }
   addToCart() {
-    this.cartService.addToCart(this.product);
+    // this.cartService.addToCart(this.product);
   }
 
 }

@@ -9,20 +9,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private userService: UserService, private auth: AuthService, router: Router) {
-    auth.user$.subscribe(user => {
-      // tslint:disable-next-line:curly
-      if (!user) return;
+  constructor(private router: Router) {
+    // auth.user$.subscribe(user => {
+    //   // tslint:disable-next-line:curly
+    //   if (!user) return;
 
-        userService.save(user);
+    //     userService.save(user);
 
-        // tslint:disable-next-line:prefer-const
-        let returnUrl = localStorage.getItem('returnUrl');
-        // tslint:disable-next-line:curly
-        if (!returnUrl) return;
+    //     // tslint:disable-next-line:prefer-const
+    //     let returnUrl = localStorage.getItem('returnUrl');
+    //     // tslint:disable-next-line:curly
+    //     if (!returnUrl) return;
 
-          localStorage.removeItem('returnUrl');
-          router.navigateByUrl(returnUrl);
-    });
+    //       localStorage.removeItem('returnUrl');
+    // //       router.navigateByUrl(returnUrl);
+    // });
   }
 }

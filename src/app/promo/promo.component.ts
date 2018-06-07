@@ -8,13 +8,11 @@ import { AlbumService } from '../album.service';
   styleUrls: ['./promo.component.css']
 })
 export class PromoComponent {
-  items: Product[] = [];
+  items: any;
 
-  constructor(private productService: AlbumService) {
-    this.productService
-  .getAll()
-  .subscribe(products => {
-  this.items = products;
-  });
+  constructor(private albumService: AlbumService) {
+    this.albumService.getAll().subscribe(res => {
+      this.items = res.json();
+    });
 }
 }

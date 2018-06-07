@@ -26,9 +26,6 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
-import { AuthService } from './auth.service';
-import { AuthGuardService } from './auth-guard.service';
-import { UserService } from './user.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryService } from './category.service';
 import { AlbumService } from './album.service';
@@ -59,6 +56,7 @@ import { WishListComponent } from './wish-list/wish-list.component';
 import { PlayComponent } from './play/play.component';
 import { TestComponent } from './test/test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -97,12 +95,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     BrowserAnimationsModule,
     FormsModule,
     CustomFormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
     DataTableModule,
     Ng2CarouselamosModule,
     InfiniteScrollModule,
@@ -119,35 +115,35 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
       { path: 'product-detail/:id', component: ProductDetailComponent},
 
-      { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService]},
-      { path: 'order-detail/:id', component: OrderDetailComponent, canActivate: [AuthGuardService]},
-      { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService]},
-      { path: 'order-success/:id', component: OrderSuccessComponent, canActivate: [AuthGuardService]},
-      { path: 'chatroom', component: ChatroomComponent, canActivate: [AuthGuardService]},
+      // { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService]},
+      // { path: 'order-detail/:id', component: OrderDetailComponent, canActivate: [AuthGuardService]},
+      // { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService]},
+      // { path: 'order-success/:id', component: OrderSuccessComponent, canActivate: [AuthGuardService]},
+      // { path: 'chatroom', component: ChatroomComponent, canActivate: [AuthGuardService]},
 
 
-      {
-        path: 'admin/products/new',
-        component: ProductFormComponent,
-        canActivate: [AuthGuardService]
-      },
-      {
-        path: 'admin/products/:id',
-        component: ProductFormComponent,
-        canActivate: [AuthGuardService, AdminAuthGuardService]
-      },
+      // {
+      //   path: 'admin/products/new',
+      //   component: ProductFormComponent,
+      //   canActivate: [AuthGuardService]
+      // },
+      // {
+      //   path: 'admin/products/:id',
+      //   component: ProductFormComponent,
+      //   canActivate: [AuthGuardService, AdminAuthGuardService]
+      // },
 
-      {
-        path: 'admin/products',
-        component: AdminProductsComponent,
-        canActivate: [AuthGuardService, AdminAuthGuardService]
-      },
+      // {
+      //   path: 'admin/products',
+      //   component: AdminProductsComponent,
+      //   canActivate: [AuthGuardService, AdminAuthGuardService]
+      // },
 
-      {
-        path: 'admin/orders',
-        component: AdminOrdersComponent,
-        canActivate: [AuthGuardService, AdminAuthGuardService]
-      },
+      // {
+      //   path: 'admin/orders',
+      //   component: AdminOrdersComponent,
+      //   canActivate: [AuthGuardService, AdminAuthGuardService]
+      // },
       {
         path: 'search-product',
         component: SearchProductComponent,
@@ -158,16 +154,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
 
   providers: [
-    AuthService,
-    AuthGuardService,
-    AdminAuthGuardService,
-    UserService,
-    CategoryService,
+    // AuthService,
+    // AuthGuardService,
+    // AdminAuthGuardService,
+    // UserService,
+    // CategoryService,
     AlbumService,
-    ShoppingCartService,
-    WishListService,
-    OrderService,
-    ChatService,
+    // ShoppingCartService,
+    // WishListService,
+    // OrderService,
+    // ChatService,
     NgbCarouselConfig
   ],
   bootstrap: [AppComponent]

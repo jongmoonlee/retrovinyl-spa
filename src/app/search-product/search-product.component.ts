@@ -23,11 +23,11 @@ export class SearchProductComponent implements OnInit, OnDestroy {
 
 
   constructor( private productService: AlbumService) {
-    this.subscription = this.productService.getAll().
-    subscribe(products => {
-      this.products = products;
-      this.initializeTable(products);
-    });
+    // this.subscription = this.productService.getAll().
+    // subscribe(products => {
+    //   this.products = products;
+    //   this.initializeTable(products);
+    // });
 
   }
 

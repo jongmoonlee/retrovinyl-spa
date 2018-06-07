@@ -28,7 +28,7 @@ export class ProductsComponent implements OnInit {
   cart$: Observable<ShoppingCart>;
   wish$: Observable<WishList>;
   userId: string;
-  album;
+  albums: any;
   number: number;
   contentlength;
   a: number;
@@ -36,31 +36,31 @@ export class ProductsComponent implements OnInit {
 
   @Input('product') product: Product;
   // tslint:disable-next-line:no-input-rename
-  @Input('show-actions') showActions = true;
+  // @Input('show-actions') showActions = true;
   // tslint:disable-next-line:no-input-rename
-  @Input('shopping-cart') shoppingCart: ShoppingCart;
+  // @Input('shopping-cart') shoppingCart: ShoppingCart;
 
 
 
   constructor(
     private route: ActivatedRoute,
     private albumService: AlbumService,
-    private shoppingCartService: ShoppingCartService,
-    private wishListService: WishListService
+    // private shoppingCartService: ShoppingCartService,
+    // private wishListService: WishListService
     ) {
    }
 
   async ngOnInit() {
-    this.cart$ = await this.shoppingCartService.getCart();
-    this.wish$ = await this.wishListService.getWishList();
+    // this.cart$ = await this.shoppingCartService.getCart();
+    // this.wish$ = await this.wishListService.getWishList();
     this.number = 150;
     await this.populateProducts(true);
   }
 
   public populateProducts(bool) {
     console.log('bool', bool);
-    this.albumService.getAll().subscribe(products => {
-      this.products = products;
+    this.albumService.getAll().subscribe(res => {
+      this.albums = res.json();
       if (bool === false) {
       return this.isSuffle = false; }
       // tslint:disable-next-line:one-line
@@ -89,18 +89,18 @@ export class ProductsComponent implements OnInit {
         this.number = 150;
     }
 
-    addToCart(album) {
-      this.shoppingCartService.addToCart(album);
-    }
+    // addToCart(album) {
+    //   this.shoppingCartService.addToCart(album);
+    // }
 
-    addToWishList(album) {
-      this.wishListService.addToWishList(album);
-    }
+    // addToWishList(album) {
+    //   this.wishListService.addToWishList(album);
+    // }
 
-    removeWishList(album) {
-      console.log('removeheart is clicekd');
-      this.wishListService.removeFromWishList(album);
-    }
+    // removeWishList(album) {
+    //   console.log('removeheart is clicekd');
+    //   this.wishListService.removeFromWishList(album);
+    // }
 
     Sort() {
       console.log('sort clicked');

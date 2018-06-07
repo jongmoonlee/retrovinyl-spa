@@ -38,7 +38,7 @@
             </li>
           </ul>
           <ng-template #anonymousUser><div class="nav-item"><a class="nav-link" routerLink="/login">Login</a></div></ng-template>      
-          <div ngbDropdown *ngIf="auth.user$ | async as user; else anonymousUser" class="nav-item dropdown">
+          <!-- <div ngbDropdown *ngIf="auth.user$ | async as user; else anonymousUser" class="nav-item dropdown">
                   <a ngbDropdownToggle 
                   class="nav-link dropdown-toggle" 
                   id="dropdown01" 
@@ -54,7 +54,7 @@
                     </div>
                       <a class="dropdown-item" (click)="logout()">Log Out</a>
                   </div>
-          </div>          
+          </div>           -->
         </div>
       </div>
     </nav>

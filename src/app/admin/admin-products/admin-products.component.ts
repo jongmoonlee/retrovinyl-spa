@@ -19,11 +19,11 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   itemCount: number;
 
   constructor( private productService: AlbumService) {
-    this.subscription = this.productService.getAll().
-    subscribe(products => {
-      this.products = products;
-      this.initializeTable(products);
-    });
+    // this.subscription = this.productService.getAll().
+    // subscribe(products => {
+    //   this.products = products;
+    //   this.initializeTable(products);
+    // });
 
   }
 

@@ -28,24 +28,23 @@ export class NavbarAlbumComponent implements OnInit {
 @Input('queries') queries: string;
 @Output()querieString = new EventEmitter();
 
-  constructor(
-    public auth: AuthService,
-    public user: UserService,
-    private shoppingCartService: ShoppingCartService,
-    private wishListService: WishListService) {
-
-
- }
+  constructor()
+    // public auth: AuthService,
+    // public user: UserService,
+    // private shoppingCartService: ShoppingCartService,
+    // private wishListService: WishListService)
+    // tslint:disable-next-line:one-line
+    { }
 
   async ngOnInit() {
-    this.cart$ = await this.shoppingCartService.getCart();
-    this.wish$ = await this.wishListService.getWishList();
-    this.isAdmin = await this.user.isAdmin(this.auth.currentUserId);
+    // this.cart$ = await this.shoppingCartService.getCart();
+    // this.wish$ = await this.wishListService.getWishList();
+    // this.isAdmin = await this.user.isAdmin(this.auth.currentUserId);
   }
 
 
   logout() {
-    this.auth.logout();
+    // this.auth.logout();
   }
   onKeyUp() {
      console.log('quer', this.queries);

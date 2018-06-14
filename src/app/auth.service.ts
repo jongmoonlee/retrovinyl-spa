@@ -1,100 +1,74 @@
-import { AppUser } from './models/app-user';
-import { UserService } from './user.service';
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
-import * as firebase from 'firebase';
-import { AngularFireDatabase } from 'angularfire2/database';
+import 'rxjs/add/operator/map';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+
+
 
 @Injectable()
 export class AuthService {
-  user$: Observable<firebase.User>;
+  baseUrl = 'http://localhost:5000/api/auth/';
+  userToken: any;
   authState: any;
-  user: firebase.User;
-  userId: string;
 
   constructor(
-    private userService: UserService,
-    private afAuth: AngularFireAuth,
-    private route: ActivatedRoute,
-    private db: AngularFireDatabase)
-    // tslint:disable-next-line:one-line
-    {
-    this.user$ = afAuth.authState;
-    this.afAuth.authState.subscribe(
-      user => this.userId = user.uid);
-  }
+    private http: Http,
+    private route: ActivatedRoute) {}
 
-  login() {
-    // tslint:disable-next-line:prefer-const
-    let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
-    localStorage.setItem('returnUrl', returnUrl);
-    this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
-  }
 
-  loginFacebook() {
-    // tslint:disable-next-line:prefer-const
-    let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
-    localStorage.setItem('returnUrl', returnUrl);
-    this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
-  }
-
-  loginTwitter() {
-    // tslint:disable-next-line:prefer-const
-    let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
-    localStorage.setItem('returnUrl', returnUrl);
-    this.afAuth.auth.signInWithRedirect(new firebase.auth.TwitterAuthProvider());
-  }
-
-  loginGithub() {
-    // tslint:disable-next-line:prefer-const
-    let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
-    localStorage.setItem('returnUrl', returnUrl);
-    this.afAuth.auth.signInWithRedirect(new firebase.auth.GithubAuthProvider());
-  }
-
-  logout() {
-    this.setUserStatus('offline');
-    this.afAuth.auth.signOut();
-
-  }
-
-  get appUser$(): Observable<AppUser> {
-    return this.user$
-    .switchMap(user => this.userService.get(user.uid));
-  }
-
-  get currentUserId() {
-    return this.userId !== null ? this.userId : '';
-  }
-
-  setUserStatus(state: string): void {
-    console.log('usrId', this.userId);
-    const path = 'users/' + this.userId;
-    const data = {
-      status: state
-    };
-
-    // tslint:disable-next-line:whitespace
-    if (this.userId) {this.db.object(path).update(data).catch(error => console.log(error));}
-    // tslint:disable-next-line:one-line
-    else {
-
-    }
-  }
-
-  getActiveUserList() {
-    return this.db.list('users/', {
-      query: {
-        orderByChild: 'status',
-        equalTo: 'online'
+  login(model: any) {
+    const headers = new Headers({'Content-type': 'application/json'});
+    const options = new RequestOptions({headers: headers});
+    return this.http.post(this.baseUrl + 'login', model, options).map((response: Response) => {
+      const user = response.json();
+      if (user) {
+        localStorage.setItem('token', user.tokenString);
+        this.userToken = user.tokenString;
       }
     });
   }
 
+
+  logout() {
+  }
+
+  // }
+
+  get appUser$(){
+    return null;
+  }
+
+
+  get currentUserId() {
+    // return this.userId !== null ? this.userId : '';
+    return null;
+  }
+
+  setUserStatus(state: string): void {
+    // console.log('usrId', this.userId);
+    // const path = 'users/' + this.userId;
+    // const data = {
+    //   status: state
+    // };
+
+    // // tslint:disable-next-line:whitespace
+    // if (this.userId) {this.db.object(path).update(data).catch(error => console.log(error));}
+    // // tslint:disable-next-line:one-line
+    // else {
+
+    // }
+  }
+
+  getActiveUserList() {
+    // return this.db.list('users/', {
+    //   query: {
+    //     orderByChild: 'status',
+    //     equalTo: 'online'
+    //   }
+    // });
+  }
+
   isAdmin() {
-    return this.db.object('users/' + this.currentUserId);
+    // return this.db.object('users/' + this.currentUserId);
 }
 }

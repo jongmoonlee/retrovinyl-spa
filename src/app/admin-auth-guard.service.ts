@@ -7,13 +7,13 @@ import { UserService } from './user.service';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class AdminAuthGuardService implements CanActivate {
+  export class AdminAuthGuardService {}
 
-  constructor(private auth: AuthService, private userService: UserService) { }
+//   constructor(private auth: AuthService, private userService: UserService) { }
 
-  canActivate(): Observable<boolean> {
-    return this.auth.appUser$
-    .map(appUser => appUser.isAdmin);
-  }
+//   // canActivate(): Observable<boolean> {
+//   //   return this.auth.appUser$
+//   //   .map(appUser => appUser.isAdmin);
+//   // }
 
-}
+// }

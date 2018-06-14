@@ -19,7 +19,7 @@ export class MyOrdersComponent {
 
   ) {
     this.id = orderService.getUserId();
-    this.orders$ =
-    authService.user$.switchMap(u => orderService.getOrdersByUser(u.uid));
+    // this.orders$ =
+    // authService.user$.switchMap(u => orderService.getOrdersByUser(u.uid));
   }
 }

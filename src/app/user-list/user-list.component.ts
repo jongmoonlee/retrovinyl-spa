@@ -10,7 +10,7 @@ import { AuthService } from '../auth.service';
 export class UserListComponent implements OnInit, OnChanges {
   userList$: Observable<string[]>;
   constructor(private activeUsers: AuthService) {
-    this.userList$ = this.activeUsers.getActiveUserList();
+    // this.userList$ = this.activeUsers.getActiveUserList();
   }
 
   ngOnInit() {

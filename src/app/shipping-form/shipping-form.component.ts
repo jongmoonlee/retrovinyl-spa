@@ -34,7 +34,7 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
     private orderService: OrderService) { }
 
   ngOnInit() {
-    this.userSubscription = this.authService.user$.subscribe(user => this.userId = user.uid);
+    // this.userSubscription = this.authService.user$.subscribe(user => this.userId = user.uid);
   }
 
   async placeOrder() {

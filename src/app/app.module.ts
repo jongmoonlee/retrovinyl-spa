@@ -57,6 +57,7 @@ import { PlayComponent } from './play/play.component';
 import { TestComponent } from './test/test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -154,7 +155,7 @@ import { HttpModule } from '@angular/http';
   ],
 
   providers: [
-    // AuthService,
+    AuthService,
     // AuthGuardService,
     // AdminAuthGuardService,
     // UserService,

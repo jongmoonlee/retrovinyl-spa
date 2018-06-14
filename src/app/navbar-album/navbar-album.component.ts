@@ -18,23 +18,13 @@ import { WishListService } from '../wish-list.service';
   styleUrls: ['./navbar-album.component.scss']
 })
 export class NavbarAlbumComponent implements OnInit {
-  appUser: AppUser;
-  cart$: Observable<ShoppingCart>;
-  wish$: Observable<WishList>;
-  isCollapsed: any;
-  idd: string;
-  isAdmin;
+  model: any = {};
 
-@Input('queries') queries: string;
-@Output()querieString = new EventEmitter();
+// @Input('queries') queries: string;
+// @Output()querieString = new EventEmitter();
 
-  constructor()
-    // public auth: AuthService,
-    // public user: UserService,
-    // private shoppingCartService: ShoppingCartService,
-    // private wishListService: WishListService)
-    // tslint:disable-next-line:one-line
-    { }
+  // tslint:disable-next-line:one-line
+  constructor(public authService: AuthService){ }
 
   async ngOnInit() {
     // this.cart$ = await this.shoppingCartService.getCart();
@@ -42,13 +32,29 @@ export class NavbarAlbumComponent implements OnInit {
     // this.isAdmin = await this.user.isAdmin(this.auth.currentUserId);
   }
 
+  login() {
+    this.authService.login(this.model).subscribe(data => {
+      console.log('logged in successfully');
+    }, error => {
+      console.log('failed to login');
+    });
+  }
+
 
   logout() {
-    // this.auth.logout();
+    this.authService.userToken = null;
+    localStorage.removeItem('token');
   }
+
+  loggedIn() {
+    const token = localStorage.getItem('token');
+    return !!token;
+  }
+
+
   onKeyUp() {
-     console.log('quer', this.queries);
-     this.querieString.emit(this.queries);
+    //  console.log('quer', this.queries);
+    //  this.querieString.emit(this.queries);
   }
 
 }

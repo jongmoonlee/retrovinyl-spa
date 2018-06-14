@@ -12,19 +12,19 @@ export class LoginComponent {
   constructor(private auth: AuthService) { }
 
   async login() {
-    await this.auth.login();
+    // await this.auth.login();
   }
 
   async loginFacebook() {
-    await this.auth.loginFacebook();
+    // await this.auth.loginFacebook();
   }
 
   async loginTwitter() {
-    await this.auth.loginTwitter();
+    // await this.auth.loginTwitter();
   }
 
   async loginGithub() {
-    await this.auth.loginGithub();
+    // await this.auth.loginGithub();
   }
 
 }

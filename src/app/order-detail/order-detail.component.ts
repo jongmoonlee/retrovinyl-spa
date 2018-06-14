@@ -43,7 +43,7 @@ constructor(
   private route: ActivatedRoute
 ) {
   this.id = orderService.getUserId();
-  this.orders$ = authService.user$.switchMap(u => orderService.getOrdersByUser(u.uid));
+  // this.orders$ = authService.user$.switchMap(u => orderService.getOrdersByUser(u.uid));
   this.userId$ = this.authService.appUser$.subscribe(appUser => this.appUser = this.appUser);
   this.allOrders$ = orderService.getOrders();
   this.idd = this.route.snapshot.paramMap.get('id');
